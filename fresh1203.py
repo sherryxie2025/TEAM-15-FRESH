@@ -487,7 +487,7 @@ if mode == "Dashboard":
     for name in highlight_names:
         sub = df[df["Food_Name"].str.contains(name, case=False, na=False)]
         if not sub.empty:
-            days = int(sub["Da1ys_Left"].min())
+            days = int(sub["Days_Left"].min())
             soon10 = int((df["Days_Left"] <= 10).sum())
             st.markdown(
                 f"""
@@ -535,7 +535,7 @@ if mode == "Dashboard":
                 y_col="Calories",
                 title="Calories by Category",
                 y_title="Calories (kcal)",
-                color="#38bdf8",  # 蓝色
+                color="#38bdf8", 
             )
             st.altair_chart(cal_chart, use_container_width=True)
         else:
@@ -549,7 +549,7 @@ if mode == "Dashboard":
                 y_col="Protein",
                 title="Protein by Category",
                 y_title="Protein (g)",
-                color="#22c55e",  # 绿色
+                color="#22c55e",  
             )
             st.altair_chart(pro_chart, use_container_width=True)
         else:
@@ -830,4 +830,5 @@ if mode in ["Dashboard", "Add Food"]:
         data=csv_bytes,
         file_name="fresh_filtered.csv",
         mime="text/csv",
+
     )
