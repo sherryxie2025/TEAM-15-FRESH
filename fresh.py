@@ -354,17 +354,17 @@ def load_csv(source: str | io.BytesIO) -> pd.DataFrame:
 @st.cache_data(show_spinner=False)
 def example_df() -> pd.DataFrame:
     csv = io.StringIO(
-        """Food_Name,Expiration_Date,Calories,Protein,Weight_g,Quantity,Category
-Milk,2026-01-15,120,8,240,1,Dairy
-Apple,2026-01-20,95,0.5,182,3,Fruit
-Yogurt,2026-01-25,80,5,150,2,Dairy
-Spinach,2026-01-12,23,3,85,1,Vegetable
-Chicken Breast,2026-01-18,165,31,120,2,Meat
-Tofu,2026-01-10,76,8,100,1,Protein
-Eggs,2026-01-22,70,6,50,12,Protein
-Bread,2026-01-14,250,9,500,1,Grain
+    """Food_Name,Expiration_Date,Calories,Protein,Weight_g,Quantity,Category
+Milk,2025-12-08,120,8,240,1,Dairy
+Apple,2025-12-10,95,0.5,182,3,Fruit
+Yogurt,2025-12-12,80,5,150,2,Dairy
+Spinach,2025-12-05,23,3,85,1,Vegetable
+Chicken Breast,2025-12-07,165,31,120,2,Meat
+Tofu,2025-12-06,76,8,100,1,Protein
+Eggs,2025-12-11,70,6,50,12,Protein
+Bread,2025-12-09,250,9,500,1,Grain
 """
-    )
+)
     return load_csv(io.BytesIO(csv.getvalue().encode()))
 
 # =========================
@@ -482,24 +482,25 @@ st.markdown(
 if mode == "Dashboard":
     st.markdown('<h2 class="page-title">Dashboard</h2>', unsafe_allow_html=True)
 
-    # Highlight a couple of key items (demo)
-    highlight_names = ["Milk", "Apple"]
-    for name in highlight_names:
-        sub = df[df["Food_Name"].str.contains(name, case=False, na=False)]
-        if not sub.empty:
-            days = int(sub["Days_Left"].min())
-            soon10 = int((df["Days_Left"] <= 10).sum())
-            st.markdown(
-                f"""
-<div class="block" style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;">
-  <div class="card-title" style="font-size:20px;">{name.title()}</div>
-  <div class="subtle">{days} days left</div>
-  <div class="subtle">{soon10} items ≤ 10 days</div>
-</div>
-""",
-                unsafe_allow_html=True,
-            )
+    # Highlight the top 3 items with least days left
+    soon_items = (
+      df.sort_values("Days_Left", ascending=True)
+        .head(3)       # ⬅️ 只取前三名
+     )
 
+    for _, row in soon_items.iterrows():
+      name = row["Food_Name"]
+      days = int(row["Days_Left"])
+
+      st.markdown(
+        f"""
+    <div class="block" style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;">
+     <div class="card-title" style="font-size:20px;">{name}</div>
+     <div class="subtle">{days} days left</div>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
     # KPI metrics
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total Items", f"{total_items:,}")
