@@ -38,15 +38,15 @@ GitHub Repository: https://github.com/sherryxie2025/TEAM-15-FRESH
 - Calories by category  
 - Protein by category  
 
+### Recipe Recommendations
+- Uses Spoonacular API  
+- Recommend top 3 recipes based on available ingredients  
+
 ### Inventory Management
 - Add and remove pantry items  
 - Auto-calculate *days left* before expiration  
 - Export inventory to CSV  
-- Search and filter by category  
-
-### Recipe Recommendations
-- Uses Spoonacular API  
-- Recommend top 3 recipes based on available ingredients  
+- Search and filter by category 
 
 ### Nutrition Auto-Fetch
 - Retrieves calories and protein from the USDA FoodData Central API  
