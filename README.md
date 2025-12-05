@@ -60,7 +60,7 @@ GitHub Repository: https://github.com/sherryxie2025/TEAM-15-FRESH
 git clone https://github.com/sherryxie2025/TEAM-15-FRESH
 ```
 
-### **2. Make Sure Python Is Installed**
+### **2. Make Sure Python Is Installed (Terminal / Bash)**
 ```bash
 python --version
 ```
@@ -73,17 +73,17 @@ Required libraries:
 - requests  
 - altair  
 
-Windows:
+Windows (run in Command Prompt / PowerShell):
 ```bash
 pip install streamlit pandas requests altair
 ```
 
-macOS:
+macOS (run in Terminal):
 ```bash
 pip3 install streamlit pandas requests altair
 ```
 
-### **4. Launch the Application**
+### **4. Launch the Application (Terminal / Bash)**
 ```bash
 streamlit run fresh.py
 ```
