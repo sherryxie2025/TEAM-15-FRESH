@@ -129,16 +129,16 @@ Use the built-in demo account:
 
 ---
 
+## Recipes
+- Uses Spoonacular  
+- Click **Refresh Recommendations** after updating inventory  
+
+---
+
 ## Add Food
 - Enter details  
 - Auto-fetch nutrition  
 - Save to inventory  
-
----
-
-## Recipes
-- Uses Spoonacular  
-- Click **Refresh Recommendations** after updating inventory  
 
 ---
 
@@ -150,7 +150,50 @@ Use the built-in demo account:
 
 # Dataset
 
-Required dataset columns:
+## Example Dataset Used in the Application
+
+FRESH system includes a built-in example dataset that can be loaded when:
+
+- The user checks **“Use example dataset”** on the homepage  
+- No CSV is uploaded  
+- No public CSV URL is provided  
+
+This dataset is embedded directly in the code and represents a small sample pantry for demonstration and testing.
+
+### **Example Dataset (Hard-coded in `fresh.py`)**
+
+| Food_Name       | Expiration_Date | Calories | Protein | Weight_g | Quantity | Category  |
+|-----------------|------------------|----------|---------|----------|----------|-----------|
+| Milk            | 2025-12-08       | 120      | 8       | 240      | 1        | Dairy     |
+| Apple           | 2025-12-10       | 95       | 0.5     | 182      | 3        | Fruit     |
+| Yogurt          | 2025-12-12       | 80       | 5       | 150      | 2        | Dairy     |
+| Spinach         | 2025-12-05       | 23       | 3       | 85       | 1        | Vegetable |
+| Chicken Breast  | 2025-12-07       | 165      | 31      | 120      | 2        | Meat      |
+| Tofu            | 2025-12-06       | 76       | 8       | 100      | 1        | Protein   |
+| Eggs            | 2025-12-11       | 70       | 6       | 50       | 12       | Protein   |
+| Bread           | 2025-12-09       | 250      | 9       | 500      | 1        | Grain     |
+
+These rows come directly from the following code block in `fresh.py`:
+
+```python
+csv = io.StringIO(
+    """Food_Name,Expiration_Date,Calories,Protein,Weight_g,Quantity,Category
+Milk,2025-12-08,120,8,240,1,Dairy
+Apple,2025-12-10,95,0.5,182,3,Fruit
+Yogurt,2025-12-12,80,5,150,2,Dairy
+Spinach,2025-12-05,23,3,85,1,Vegetable
+Chicken Breast,2025-12-07,165,31,120,2,Meat
+Tofu,2025-12-06,76,8,100,1,Protein
+Eggs,2025-12-11,70,6,50,12,Protein
+Bread,2025-12-09,250,9,500,1,Grain
+"""
+)
+```
+
+---
+
+## Required Dataset Columns
+You can also upload datasets. The required dataset columns:
 
 | Column Name | Description |
 |-------------|-------------|
