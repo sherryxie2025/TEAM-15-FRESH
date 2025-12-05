@@ -262,7 +262,8 @@ FRESH_CSS = """
 """
 st.markdown(FRESH_CSS, unsafe_allow_html=True)
 
-SPOONACULAR_API_KEY = "f6fe73660fae4273ba25c44ec8c126be"
+SPOONACULAR_API_KEY = "14fba7f69441499c9de31837fd59d713"
+# SPOONACULAR_API_KEY = "f6fe73660fae4273ba25c44ec8c126be"
 
 @st.cache_data(ttl=60 * 60 * 12)
 def fetch_recipes_safe(ingredients, n=3):
@@ -485,7 +486,7 @@ if mode == "Dashboard":
     # Highlight the top 3 items with least days left
     soon_items = (
       df.sort_values("Days_Left", ascending=True)
-        .head(3)       # ⬅️ 只取前三名
+        .head(3)       # only top 3
      )
 
     for _, row in soon_items.iterrows():
@@ -536,7 +537,7 @@ if mode == "Dashboard":
                 y_col="Calories",
                 title="Calories by Category",
                 y_title="Calories (kcal)",
-                color="#38bdf8",  # 蓝色
+                color="#38bdf8",  # blue
             )
             st.altair_chart(cal_chart, use_container_width=True)
         else:
@@ -550,7 +551,7 @@ if mode == "Dashboard":
                 y_col="Protein",
                 title="Protein by Category",
                 y_title="Protein (g)",
-                color="#22c55e",  # 绿色
+                color="#22c55e",  # green
             )
             st.altair_chart(pro_chart, use_container_width=True)
         else:
