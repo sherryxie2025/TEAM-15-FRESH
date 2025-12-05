@@ -9,7 +9,7 @@ GitHub Repository: https://github.com/sherryxie2025/TEAM-15-FRESH
 - Installation
 - Configuration (API Keys)
 - Usage
-- Dataset & Codebook
+- Dataset
 - Project Structure
 - API Services Used
 - Key Variables Used in Code
@@ -159,6 +159,7 @@ FRESH system includes a built-in example dataset that can be loaded when:
 - No public CSV URL is provided  
 
 This dataset is embedded directly in the code and represents a small sample pantry for demonstration and testing.
+You can also find this CSV file in our GitHub Repository.
 
 ### **Example Dataset (Hard-coded in `fresh.py`)**
 
@@ -212,7 +213,8 @@ You can also upload datasets. The required dataset columns:
 ```
 TEAM-15-FRESH/
 │
-├── fresh.py                 
+├── fresh.py
+├── example_dataset.csv              
 ├── README.md                
 └── images/
       ├── add_food.png
